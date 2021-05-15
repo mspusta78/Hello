@@ -21,3 +21,5 @@ function DisplayName(nameValue) {
 DisplayName("Martin Spusta")
 
 console.log(global.globalString);
+
+console.log("Let's add some new cool feature")
