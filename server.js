@@ -52,7 +52,7 @@ app.get('/', function (req, res, next) {
 // res.send('Hello World!')
 
 var objUser = {
-    displayName : "Martin",
+    displayName : "Martin Spusta",
     location : "California"
 }
 res.json(objUser)
