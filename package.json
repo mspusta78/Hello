@@ -2,14 +2,14 @@
   "name": "hello",
   "version": "1.0.0",
   "main": "server.js",
+  "scripts": {
+    "start": "node index.js"
+  },
   "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://git.heroku.com/dry-headland-59189.git"
   },
-  "author": "",
-  "license": "ISC",  
-  "description": "",
   "dependencies": {
     "express": "^4.17.1"
   }
