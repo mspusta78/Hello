@@ -13,13 +13,26 @@ http.createServer(function (request, response) {
 // Console will print the message
 console.log('Server running at http://127.0.0.1:8081/');
 
+var myLogModule = require('./Log.js');
 
-function DisplayName(nameValue) { 
-    console.log(nameValue);
-}
+//myLogModule.info('Node.js is awesome!');
 
-DisplayName("Martin Spusta")
+var msg = require('./TextMessage.js');
+msg.log('Hello World');
 
-console.log(global.globalString);
+//console.log(msg.SimpleMessage);
 
-console.log("Let's add some new cool feature")
+
+
+
+//console.log(msg);
+
+// function DisplayName(nameValue) { 
+//     console.log(nameValue);
+// }
+
+// DisplayName("Martin Spusta")
+
+// console.log(global.globalString);
+
+// console.log("Let's add some new cool feature")
