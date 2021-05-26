@@ -1,7 +1,15 @@
 {
-  "scripts": {
-    "start": "node server.js"
+  "name": "hello",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://git.heroku.com/dry-headland-59189.git"
   },
+  "author": "",
+  "license": "ISC",  
+  "description": "",
   "dependencies": {
     "express": "^4.17.1"
   }
