@@ -27,6 +27,6 @@ res.json(objUser)
 })
 
 
-var server = app.listen(5000, function () {
+var server = app.listen( process.env.PORT || 5000, function () {
     console.log('Express.js Web server is running at http://127.0.0.1:5000');
 });
