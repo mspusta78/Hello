@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+
+    </head>
+  <body>
+      
+    <form id="mainForm">
+        <div class="container">
+            <h2>Customer Feedback Form</h2>
+            <div class="form-group">
+                <label for="txtName"></label>
+                <input type="text"
+                class="form-control" name="txtName" id="txtName" placeholder="Enter Your Name" required>            
+            </div>
+
+            <div class="form-group">
+                <label for="">Enter Your Email</label>
+                <input type="email" class="form-control" name="txtEmail" id="txtEmail" aria-describedby="emailHelpId" placeholder="Enter Your Email">
+                <small id="emailHelpId" class="form-text text-muted">Your email address</small>
+            </div>
+        
+            <div class="form-group">
+                <label for="txtFeedback">Provide Feedback</label>
+                <textarea class="form-control" name="txtFeedback" id="txtFeedback" rows="3"></textarea>
+            </div>
+        
+            <a onclick="sendEmail()" name="btnSubmit" id="btnSubmit" class="btn btn-primary" href="#" role="submit">Submit</a>
+            
+            
+        </div>
+    </form>
+    
+
+    <script>
+        async function sendEmail(){        
+            if ($("#mainForm")[0].checkValidity()) {
+                // form is valid
+                const data = { 
+                        name:  $("#txtName").val(),
+                        email:  $("#txtEmail").val(),
+                        feedback:  encodeURI($("#txtFeedback").val())
+                };       
+                console.log(data)
+                
+                //disable button and show Loading...
+                $("#btnSubmit").addClass('disabled');
+                $("#btnSubmit").html("Loading...")
+
+                postData("http://127.0.0.1:5000/sendEmail", data).then(
+                    (returnValue) => {
+                        alert("Message Sent")   
+                        $("#btnSubmit").removeClass("disabled")
+                        $("#btnSubmit").html("Submit")                    
+                    },(error)=> {
+                        alert(error)
+                        $("#btnSubmit").removeClass("disabled")
+                        $("#btnSubmit").html("Submit")
+                    }
+                )        
+            }else{
+                // form is not valid
+            } 
+            
+            $("#mainForm").addClass("was-validated")
+        }
+
+        // Example POST method implementation:
+        async function postData(url, data) {    
+            const response = await fetch(url, {
+                method: 'POST', // todo: change to POST
+                headers: {
+                    'Content-Type': 'application/json'                    
+                },
+               body: JSON.stringify(data),              
+            });        
+            return response.json();
+        }
+
+
+    </script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    
+
+  </body>
+</html>

@@ -6,11 +6,10 @@
     "start": "node server.js"
   },
   "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://git.heroku.com/dry-headland-59189.git"
-  },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "firebase-admin": "^9.9.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemailer": "^6.6.2"
   }
 }

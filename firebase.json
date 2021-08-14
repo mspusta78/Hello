@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "/",
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/feedbackform.html"
+      }
+    ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
