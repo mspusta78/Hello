@@ -21,19 +21,6 @@ app.use(cors);
 // parse application/json
 // app.use(bodyParser.json())
 
-app.get('/test', function (req, res) {
-    async function someFunction() {
-
-       
-        console.log("Started Function Execution")
-        let result = await myPromise; // wait until the promise resolves 
-        console.log("Function resolved " + result)
-        console.log("Function Finished")
-        res.end
-      }
-      
-    someFunction();
-})
 
 app.post('/sendEmail', function(req, res) {
     var nodemailer = require('nodemailer');
@@ -146,16 +133,6 @@ app.delete('/deleteUser', function (req, res) {
 
 
 
-  const myPromise = new Promise((resolve, reject) => {
-    try {
-        if (Math.random() > 10000) {
-            resolve('This is positive number!');
-        }
-        reject('Negative number');    
-    } catch (error) {
-        reject(error)
-    }        
-})
 
 
 //  const id = req.query.id;
@@ -283,7 +260,11 @@ app.delete('/users/:id', async function (req, res) {
 //  })
 
 
- 
+// define default route here..
+    app.get('/', function (req, res) {
+    res.send('<html><body><h1>Hello to RESTful API</h1></body></html>');
+});
+
 var server = app.listen( process.env.PORT || 5000, function () {
     console.log('Express.js Web server is running at http://127.0.0.1:5000');
 });
@@ -293,10 +274,7 @@ var server = app.listen( process.env.PORT || 5000, function () {
 // app.use(express.static('public'));
 
 
- // define default route here..
- app.get('/', function (req, res) {
-    res.send('<html><body><h1>Hello to RESTful API</h1></body></html>');
-});
+
 
 
 // http://127.0.0.1:5000/api/users?id=123&name=Martin&password=password123&profession=teacher
