@@ -145,7 +145,19 @@ app.delete('/deleteUser', function (req, res) {
   })
 
 
- 
+
+  const myPromise = new Promise((resolve, reject) => {
+    try {
+        if (Math.random() > 10000) {
+            resolve('This is positive number!');
+        }
+        reject('Negative number');    
+    } catch (error) {
+        reject(error)
+    }        
+})
+
+
 //  const id = req.query.id;
 //      const name = req.query.name;
 //      const password = req.query.password;
@@ -294,16 +306,6 @@ var server = app.listen( process.env.PORT || 5000, function () {
 
 
 
-const myPromise = new Promise((resolve, reject) => {
-    try {
-        if (Math.random() > 10000) {
-            resolve('This is positive number!');
-        }
-        reject('Negative number');    
-    } catch (error) {
-        reject(error)
-    }        
-})
 
 
 
